@@ -16,18 +16,28 @@
 <body>
 
   <header class="header">
-          <img src="img/sfondo-index.jpg" alt="sfondo">
+        <img src="img/sfondo-index.jpg" alt="sfondo">
         <h1 class="title-top">Lifestyle in...</h1>
-          <div class="input-group">
-            <input type="text" class="form-control" id="city-input" placeholder="Search" name="search">
-            <div class="input-group-btn">
-              <button class="btn btn-default" id="search" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-            </div>
+
+        <div class="input-group">
+          <input type="text" class="form-control" id="city-input" placeholder="Search" name="search">
+          <div class="input-group-btn">
+            <button class="btn btn-default" id="search" type="submit"><i class="glyphicon glyphicon-search"></i></button>
           </div>
+
+          <div class="dropdown">
+            <div id="myDropdown" class="dropdown-content"></div>
+          </div>
+        </div>
   </header>
 
   <div class="result" id="result">
-
+    <h3>Categorie:</h3>
+    <div class="result-categories" id="result-categories"></div><br>
+    <h3>Descrizione:</h3>
+    <div class="result-descrizione" id="result-descrizione"></div><br>
+    <h3>City Score:</h3>
+    <div class="result-city-score" id="result-city-score"></div>
   </div>
 
   <footer class="footer">

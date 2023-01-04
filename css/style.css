@@ -24,7 +24,6 @@ body {
 }
 
 .input-group {
-    width: 30%;
     display: inline-block !important;
     margin-left: auto;
     margin-right: auto;
@@ -38,6 +37,44 @@ body {
 
 input[type=text] , .btn{
     height: 50px;
+}
+
+#search {
+    border-radius: 0px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f6f6f6;
+    min-width: auto;
+    overflow: auto;
+    border: 1px solid #ddd;
+    z-index: 1;
+}
+
+.dropdown-content option {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+
+.dropdown option:hover {
+    background-color: #ddd;
+    cursor: pointer;
+}
+
+.show {
+    display: block;
+    width: 200px;
+    text-align: center;
+    height: 200px;
 }
 
 .header img {
