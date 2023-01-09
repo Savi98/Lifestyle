@@ -85,3 +85,8 @@ input[type=text] , .btn{
     object-fit: cover;
     opacity: 0.7;
 }
+
+.titolo-citta {
+    display: flex;
+    justify-content: center;
+}
