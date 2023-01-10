@@ -37,9 +37,13 @@ function creazionElementi (tagname, classe, id, text) {
         elemento.innerHTML = text;
         return elemento;
 }
+
+const primoDiv= creazionElementi ('div', 'primo-div', '', '');
+result.append(primoDiv);
+
 let city = '';
 const h1Citta = creazionElementi ('h1', 'titolo-citta', '', city);
-result.append(h1Citta);
+primoDiv.append(h1Citta);
 
 let categ = '';
 const resultCategories = creazionElementi ('div', 'result-categories', '', categ);
@@ -51,7 +55,7 @@ result.append(resultDescrizione);
 
 let cityScore = '';
 const resultCityScore = creazionElementi ('div', 'result-city-score', '', cityScore);
-result.append(resultCityScore);
+primoDiv.append(resultCityScore);
 
 search.addEventListener('click', searchApi);
 
@@ -79,9 +83,8 @@ function searchApi(){
                                 categorie +=      
                                         '<table>' + 
                                                 '<tr>' + 
-                                                        '<th id="th-colore" style="color:'+ colore +'">'+ colore + '</th>' +
-                                                        '<th>' + name + '</th>' + 
-                                                        '<th>' + scoreCityArrotondato + '/10' + '</th>' + 
+                                                        '<th>'+ name + '</th>' +
+                                                        '<th class="th-score" style="background-color:'+ colore +'">'+ scoreCityArrotondato + '/10' + '</th>' +
                                                 '</tr>' +
                                         '</table>';
 
@@ -99,7 +102,7 @@ function searchApi(){
 
                         cityScore = data.teleport_city_score;
                         let cityScoreArrotondato = Math.round(cityScore);
-                        resultCityScore.innerHTML = '<h4><b>Teleport City Score: </b></h4>  ' + cityScoreArrotondato;
+                        resultCityScore.innerHTML = '<h1>City Score:   ' + cityScoreArrotondato + '</h1>';
         
                         cityInput.value = innerHTML = '';
                         myDropdown.classList.remove("show");
