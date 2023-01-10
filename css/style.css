@@ -90,3 +90,17 @@ input[type=text] , .btn{
     display: flex;
     justify-content: center;
 }
+
+h4 {
+    display: inline-block;
+}
+
+table {
+    width: 80%;
+    margin: auto;
+    table-layout: fixed;
+}
+
+th {
+    text-align: center !important;
+}

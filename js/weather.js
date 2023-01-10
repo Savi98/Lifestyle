@@ -2,8 +2,8 @@ let search = document.getElementById('search');
 let result = document.getElementById('result');
 let cityInput = document.getElementById('city-input');
 let myDropdown = document.getElementById('myDropdown');
-
 let resultH3 = document.querySelectorAll("h3");
+let footer = document.getElementById('footer');
 
 cityInput.addEventListener('click', searchCities);
 
@@ -26,7 +26,6 @@ function searchCities() {
                                 let citySelected = e.target.value;
                                 cityInput.value = citySelected;
                         }
-
                 }
         )
 }
@@ -67,10 +66,28 @@ function searchApi(){
                         h1Citta.innerHTML = cityUpperCase + '<br>';
 
                         let categorie = '';
+
                         for(let prop in data.categories){
-                                categorie += JSON.stringify(data.categories[prop]) + '<br>';
+                                let colore = data.categories[prop].color;
+
+                                let name = data.categories[prop].name;
+
+                                let scoreCity = data.categories[prop].score_out_of_10;
+                                let scoreCityArrotondato = Math.round(scoreCity);
+
+                                
+                                categorie +=      
+                                        '<table>' + 
+                                                '<tr>' + 
+                                                        '<th id="th-colore" style="color:'+ colore +'">'+ colore + '</th>' +
+                                                        '<th>' + name + '</th>' + 
+                                                        '<th>' + scoreCityArrotondato + '/10' + '</th>' + 
+                                                '</tr>' +
+                                        '</table>';
+
                                 categ = categorie;
                                 resultCategories.innerHTML = categ + '<br>';
+
                         }
                         
                         let descrizione = '';
@@ -81,13 +98,12 @@ function searchApi(){
                         }
 
                         cityScore = data.teleport_city_score;
-                        resultCityScore.innerHTML = cityScore;
+                        let cityScoreArrotondato = Math.round(cityScore);
+                        resultCityScore.innerHTML = '<h4><b>Teleport City Score: </b></h4>  ' + cityScoreArrotondato;
         
                         cityInput.value = innerHTML = '';
                         myDropdown.classList.remove("show");
                 }
-                
                 )
         }
-        
 }
