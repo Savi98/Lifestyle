@@ -5,19 +5,19 @@ let myDropdown = document.getElementById('myDropdown');
 let resultH3 = document.querySelectorAll("h3");
 let footer = document.getElementById('footer');
 
-cityInput.addEventListener('click', searchCities);
+cityInput.addEventListener('click', showCities);
 
-function searchCities() {
+
+function showCities() {
         myDropdown.classList.toggle("show");
 
         fetch ('https://api.teleport.org/api/urban_areas/')
         .then (Response => Response.json())
         .then (data => {
-                        let i = 0;
                         let cities = "";
-                        while (i < 266){
-                                cities += '<option "value=' + [data._links['ua:item'][i].name] + '">' + (data._links['ua:item'][i].name) + '</option>';
-                                i++;
+                        
+                        for(let prop in data._links['ua:item']){
+                                cities += '<option "value=' + [data._links['ua:item'][prop].name] + '">' + (data._links['ua:item'][prop].name) + '</option>';
                                 let citiesLowerCase = cities.toLowerCase();
                                 myDropdown.innerHTML = citiesLowerCase;
                         }
@@ -26,8 +26,32 @@ function searchCities() {
                                 let citySelected = e.target.value;
                                 cityInput.value = citySelected;
                         }
+
+                        let citiesFilter = '';
+                        let nameCities = '';
+                        for(let prop in data._links['ua:item']){
+                                citiesFilter += [data._links['ua:item'][prop].name] + '<br>';
+                                nameCities = citiesFilter;
+                                
+                        }
                 }
         )
+}
+
+cityInput.addEventListener('input', filterList);
+
+function filterList(){
+        let filter = cityInput.value.toLowerCase();
+        let listItems = document.querySelectorAll('option');
+
+        listItems.forEach((item) => {
+                let text = item.textContent;
+                if(text.toLowerCase().includes(filter.toLowerCase())){
+                        item.style.display = '';
+                } else {
+                        item.style.display = 'none';
+                }
+        })
 }
 
 function creazionElementi (tagname, classe, id, text) {
