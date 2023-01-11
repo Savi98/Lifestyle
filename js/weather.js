@@ -7,7 +7,6 @@ let footer = document.getElementById('footer');
 
 cityInput.addEventListener('click', showCities);
 
-
 function showCities() {
         myDropdown.classList.toggle("show");
 
