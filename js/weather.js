@@ -14,11 +14,11 @@ function showCities() {
         .then (Response => Response.json())
         .then (data => {
                         let cities = "";
-                        
                         for(let prop in data._links['ua:item']){
                                 cities += '<option "value=' + [data._links['ua:item'][prop].name] + '">' + (data._links['ua:item'][prop].name) + '</option>';
                                 let citiesLowerCase = cities.toLowerCase();
                                 myDropdown.innerHTML = citiesLowerCase;
+
                         }
 
                         myDropdown.onclick = e => {
@@ -68,13 +68,16 @@ let city = '';
 const h1Citta = creazionElementi ('h1', 'titolo-citta', '', city);
 primoDiv.append(h1Citta);
 
+const resultSummary = creazionElementi ('div', 'result-summary', '', '');
+result.append(resultSummary);
+
 let categ = '';
 const resultCategories = creazionElementi ('div', 'result-categories', '', categ);
-result.append(resultCategories);
+resultSummary.append(resultCategories);
 
 let descr = '';
 const resultDescrizione = creazionElementi ('div', 'result-descrizione', '', descr);
-result.append(resultDescrizione);
+resultSummary.append(resultDescrizione);
 
 let cityScore = '';
 const resultCityScore = creazionElementi ('div', 'result-city-score', '', cityScore);
@@ -85,7 +88,10 @@ search.addEventListener('click', searchApi);
 function searchApi(){
         if (cityInput.value !== ''){
 
-                fetch ('https://api.teleport.org/api/urban_areas/slug:'+[cityInput.value]+'/scores/')
+                let res = cityInput.value.replace(/ /g, "-");
+                let res1 = res.replace(/,/g, "");
+
+                fetch ('https://api.teleport.org/api/urban_areas/slug:'+[res1]+'/scores/')
                 .then (Response => Response.json())
                 .then (data => {
                         city = cityInput.value;
@@ -93,7 +99,6 @@ function searchApi(){
                         h1Citta.innerHTML = cityUpperCase + '<br>';
 
                         let categorie = '';
-
                         for(let prop in data.categories){
                                 let colore = data.categories[prop].color;
 
@@ -102,7 +107,6 @@ function searchApi(){
                                 let scoreCity = data.categories[prop].score_out_of_10;
                                 let scoreCityArrotondato = Math.round(scoreCity);
 
-                                
                                 categorie +=      
                                         '<table>' + 
                                                 '<tr>' + 
@@ -113,7 +117,6 @@ function searchApi(){
 
                                 categ = categorie;
                                 resultCategories.innerHTML = categ + '<br>';
-
                         }
                         
                         let descrizione = '';
