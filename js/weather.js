@@ -93,8 +93,9 @@ function searchApi(){
 
                 let res = cityInput.value.replace(/ /g, "-");
                 let res1 = res.replace(/,/g, "");
+                let res2 = res1.replace(/\./g,"");
 
-                fetch ('https://api.teleport.org/api/urban_areas/slug:'+[res1]+'/scores/')
+                fetch ('https://api.teleport.org/api/urban_areas/slug:'+[res2]+'/scores/')
                 .then (Response => Response.json())
                 .then (data => {
                         city = cityInput.value;
@@ -137,6 +138,12 @@ function searchApi(){
                         myDropdown.classList.remove("show");
                         divMain.style.display ='none';
                         footer.style.bottom = 'auto';
+
+                        /*text = 'washington, d.c.';
+                        let res = text.replace(/ /g, "-");
+                        let res1 = res.replace(/,/g, "");
+                        let res2 = res1.replace(/./g, "");
+                        console.log(res2);*/
                 }
                 )
         }
