@@ -1,43 +1,61 @@
+html {
+    height: 100%;
+    box-sizing: border-box;
+  }
+
 body {
-    left: 0;
-    right: 0;
-    bottom: 0;
-    top: 0;
     margin: 0;
-    padding: 0;
     box-sizing: border-box;
     background-color: papayawhip !important;
-    height:100%;
+    min-height: 100%;
+    position: relative;
+    font-family: initial !important;
   }
 
 .header {
     width: 100%;
-    height: 20vh;
     display: grid;
 }
 
 .title-top {
     text-align: center;
-    margin-top: auto;
     font-size: 8rem;
     font-weight: 800;
-    z-index: 2;
 }
+
+@media (max-width: 999px) {
+    .title-top {
+        font-size: 4rem !important;
+    }
+  }
 
 .input-group {
     display: inline-block !important;
-    margin-left: auto;
-    margin-right: auto;
-    z-index: 2;
+    margin: auto;
+}
+
+.form-control {
+    width: 300px !important;
+}
+
+@media (max-width: 450px) {
+    .form-control {
+        width: 150px !important;
+    }
 }
 
 .input-group-btn {
     display: block !important;
-    z-index: 2;
 }
 
 input[type=text] , .btn{
     height: 50px;
+}
+
+@media (max-width: 450px) {
+    input[type=text], .btn,  .btn-default {
+        height: 35px;
+    }
 }
 
 #search {
@@ -73,22 +91,37 @@ input[type=text] , .btn{
 
 .show {
     display: block;
-    width: 200px;
+    width: 300px;
     text-align: center;
-    height: 200px;
+    height: 150px;
 }
 
-.header img {
-    position: absolute;
-    z-index: 1;
+@media (max-width: 450px) {
+    .show {
+        width: 150px;
+    }
+}
+
+.main {
+    display: flex;
+    align-items: center;
+    height: 65vh;
+}
+
+.main img{
     width: 100%;
-    height: 40vh;
-    object-fit: cover;
-    opacity: 0.7;
+    height: 400px;
+    object-fit: contain;
 }
 
 h1 {
     text-transform: uppercase;
+}
+
+@media (max-width: 450px) {
+    h1 {
+        font-size: 17px !important;
+    }
 }
 
 .primo-div {
@@ -97,8 +130,7 @@ h1 {
 }
 
 .result {
-    width: 100%;
-    height: 65vh;
+    display: none;
 }
 
 .titolo-citta {
@@ -106,7 +138,7 @@ h1 {
 }
 
 .result-city-score {
-    text-align: start;
+    text-align: center;
 }
 
 table {
@@ -114,6 +146,12 @@ table {
     table-layout: fixed;
     border: 1px solid black;
     margin: auto;
+}
+
+@media (max-width: 800px) {
+    table {
+        width: 95%;
+    }
 }
 
 th {
@@ -129,26 +167,52 @@ th {
     grid-template-columns: 1.5fr 1fr;
 }
 
+@media (max-width: 800px) {
+    .result-summary {
+        display: block;
+        height: auto;
+    }
+}
+
+.result-descrizione {
+    margin: auto;
+}
+
+.result-descrizione p {
+    font-size: 20px;
+    margin: auto;
+    text-align: center;
+    margin-right: 30px;
+}
+
+@media (max-width: 450px) {
+    .result-descrizione p {
+        margin: 0;
+    }
+}
+
 .footer {
     background-image: linear-gradient(to right, #434343 0%, black 100%);
-    padding: 10px 0;
     text-align: center;
-    height: 15vh;
-  }
-  .footer a {
+    width: 100%;
+    height: 70px;
+    position: absolute;
+    bottom: 0;
+}
+
+.footer a {
     font-size: 25px;
     padding: 20px;
     transition: all .5s ease;
     color: white;
-  }
+}
   
-  .footer a:hover {
+.footer a:hover {
     text-decoration: underline;
     color: grey;
-  }
-  
-  .container {
-    align-items: center;
-    display: flex;
-    justify-content: center;
-  }
+}
+
+.container {
+    margin: auto;
+    padding: 5px 0px 0px 0px;
+}

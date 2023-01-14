@@ -2,6 +2,7 @@ let search = document.getElementById('search');
 let result = document.getElementById('result');
 let cityInput = document.getElementById('city-input');
 let myDropdown = document.getElementById('myDropdown');
+let divMain = document.getElementById('main');
 let resultH3 = document.querySelectorAll("h3");
 let footer = document.getElementById('footer');
 
@@ -83,10 +84,12 @@ let cityScore = '';
 const resultCityScore = creazionElementi ('div', 'result-city-score', '', cityScore);
 primoDiv.append(resultCityScore);
 
-search.addEventListener('click', searchApi);
+search.addEventListener('click', searchApi, true);
 
 function searchApi(){
         if (cityInput.value !== ''){
+
+                result.style.display = 'block';
 
                 let res = cityInput.value.replace(/ /g, "-");
                 let res1 = res.replace(/,/g, "");
@@ -116,7 +119,7 @@ function searchApi(){
                                         '</table>';
 
                                 categ = categorie;
-                                resultCategories.innerHTML = categ + '<br>';
+                                resultCategories.innerHTML = '<p>' +  categ + '</p>' + '<br>';
                         }
                         
                         let descrizione = '';
@@ -132,6 +135,8 @@ function searchApi(){
         
                         cityInput.value = innerHTML = '';
                         myDropdown.classList.remove("show");
+                        divMain.style.display ='none';
+                        footer.style.bottom = 'auto';
                 }
                 )
         }
