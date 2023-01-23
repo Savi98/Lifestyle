@@ -1,0 +1,20 @@
+{
+  "name": "lifestyle",
+  "version": "1.0.0",
+  "description": "> Qui puoi controllare com'è la qualità della vita nelle città piu importanti al mondo. > Demo [_qui_](https://savino-lanotte-lifestyle.netlify.app/).",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Savi98/Lifestyle.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Savi98/Lifestyle/issues"
+  },
+  "homepage": "https://github.com/Savi98/Lifestyle#readme"
+}
